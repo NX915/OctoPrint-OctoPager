@@ -1,6 +1,6 @@
 # OctoPrint-OctoPager
 
-**TODO:** Describe what your plugin does.
+Enable your 3D printer to trigger PagerDuty incidents.
 
 ## Setup
 
@@ -9,9 +9,7 @@ or manually using this URL:
 
     https://github.com/NX915/OctoPrint-OctoPager/archive/master.zip
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
-
 ## Configuration
 
-**TODO:** Describe your plugin's configuration options (if any).
+Token: PagerDuty API key
+Service: The service to send alerts to
