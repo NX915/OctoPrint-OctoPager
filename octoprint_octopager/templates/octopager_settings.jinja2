@@ -1,8 +1,45 @@
 <form class="form-horizontal">
+    <h2>1. Setup PagerDuty</h2>
     <div class="control-group">
-        <label class="control-label">{{ _('URL') }}</label>
+        <p>
+            <a href="https://www.pagerduty.com/sign-up/">Sign up</a>
+            and obtain your
+            <a href="https://pdt-xni.pagerduty.com/api_keys">API key</a>
+            on PagerDuty.
+        </p>
+        <label class="control-label">{{ _('PagerDuty Token') }}</label>
         <div class="controls">
-            <input type="text" class="input-block-level" data-bind="value: settings.plugins.octopager.url">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.octopager.pd_token">
+        </div>
+        </br>
+        <p>Select the name of the service you want the alert to be sent to.</p>
+        <label class="control-label">{{ _('Service Name') }}</label>
+        <select type="" class="input-block-level" data-bind="value: settings.plugins.octopager.pd_service_id">
+            {% for service in plugin_octopager_services %}
+            <option value="{{ service['id'] }}">{{ service["name"] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    </br>
+    <h2>2. Select Alerts</h2>
+    <div class="control-group">
+        <label class="control-label">{{ _('Print Done') }}</label>
+        <div class="controls">
+            <input type="checkbox" class="input-block-level" data-bind="checked: settings.plugins.octopager.print_done">
+        </div>
+        <label class="control-label">{{ _('Print Failed') }}</label>
+        <div class="controls">
+            <input type="checkbox" class="input-block-level"
+                data-bind="checked: settings.plugins.octopager.print_failed">
+        </div>
+    </div>
+    </br>
+    <h2>3. Confirm</h2>
+    <div class="control-group">
+        <label class="control-label">{{ _('Send test alert on next restart') }}</label>
+        <div class="controls">
+            <input type="checkbox" class="input-block-level"
+                data-bind="checked: settings.plugins.octopager.test_start_alert">
         </div>
     </div>
 </form>
