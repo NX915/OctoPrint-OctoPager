@@ -133,7 +133,7 @@ class OctopagerPlugin(octoprint.plugin.StartupPlugin,
                 self._settings.get(["pd_service_id"]))
             key = pd.get_intergration(service["id"], service["integrations"][0]["id"])[
                 "integration_key"]
-            pd.post_incident(key, f"Octopager test alert!")
+            pd.post_incident(key, f"OctoPager test alert!")
         elif event == octoprint.events.Events.PRINT_FAILED and self._settings.get(["print_failed"]):
             service = pd.get_service_by_id(
                 self._settings.get(["pd_service_id"]))
