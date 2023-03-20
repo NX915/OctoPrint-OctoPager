@@ -119,6 +119,8 @@ class OctopagerPlugin(octoprint.plugin.StartupPlugin,
                     print_done=False,
                     print_failed=False,
                     test_start_alert=False,
+                    first_layer_done=False,
+                    filament_change=False,
                     )
 
     def on_event(self, event, payload):
@@ -147,6 +149,14 @@ class OctopagerPlugin(octoprint.plugin.StartupPlugin,
                 "integration_key"]
             pd.post_incident(
                 key, f"Print finished: {payload['name']}", "info")
+        elif event == octoprint.events.Events.FILAMENT_CHANGE and self._settings.get(["filament_change"]):
+            service = pd.get_service_by_id(
+                self._settings.get(["pd_service_id"]))
+            key = pd.get_intergration(service["id"], service["integrations"][0]["id"])[
+                "integration_key"]
+            pd.post_incident(
+                key, f"Filament change needed for: {payload['name']}", "info")
+        # TODO add first layer done event
 
     def get_template_vars(self):
         pd = PdClient(self._settings.get(["pd_token"]))

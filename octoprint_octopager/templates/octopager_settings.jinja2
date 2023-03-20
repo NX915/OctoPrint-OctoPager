@@ -3,7 +3,7 @@
     <div class="control-group">
         <p>
             <a href="https://www.pagerduty.com/sign-up/" target="_blank" rel="noopener noreferrer">Sign up</a>
-            and obtain your PagerDuty API token.
+            and obtain your PagerDuty API token. (restart required)
         </p>
         <label class="control-label">{{ _('Token') }}</label>
         <div class="controls">
@@ -36,6 +36,11 @@
         <div class="controls">
             <input type="checkbox" class="input-block-level"
                 data-bind="checked: settings.plugins.octopager.first_layer_done">
+        </div>
+        <label class="control-label">{{ _('Filament Change') }}</label>
+        <div class="controls">
+            <input type="checkbox" class="input-block-level"
+                data-bind="checked: settings.plugins.octopager.filament_change">
         </div>
     </div>
     </br>
